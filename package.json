@@ -1,0 +1,30 @@
+{
+  "name": "breaking-news-ws-server",
+  "version": "1.0.0",
+  "description": "WebSocket server for handling RFID card scans and broadcasting them to connected clients",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development ENABLE_SOUND=true node server.js",
+    "prod": "NODE_ENV=production node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "websocket",
+    "rfid",
+    "realtime",
+    "nodejs",
+    "railway"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "play-sound": "^1.1.6",
+    "ws": "^8.18.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
