@@ -56,12 +56,18 @@ wss.on('connection', (ws, req) => {
                 // Broadcast to all React clients
                 clients.forEach((id, client) => {
                     if (client !== ws && client.readyState === WebSocket.OPEN) {
-                        client.send(JSON.stringify({
+                        scanData = {
                             type: 'rfid_scan',
                             cardId: data.cardId,
                             deviceId: data.deviceId,
                             timestamp: new Date().toISOString(),
-                        }));
+                        }
+                        // check if it's deviceId esp32-003, if so add a readerId to the broadcast
+                        if (data.deviceId === 'esp32-003' && data.readerId) {
+                            scanData.readerId = data.readerId;
+                        }
+
+                        client.send(JSON.stringify(scanData));
                     }
                 });
             } else if (data.type === 'device_connect') {
